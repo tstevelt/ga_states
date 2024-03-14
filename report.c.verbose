@@ -1,0 +1,86 @@
+
+#include	"ga_states.h"
+
+void report ( int gen_number )
+{
+	int		xp, xc, PrintIt;
+	static	int		mindist = 0;
+	static	int		maxdist = 0;
+
+#ifdef VERBOSE
+#define VERBOSE
+	printf ( "Generation %d", gen_number );
+
+	if ( gen_number < 3 || gen_number == Generations )
+	{
+		PrintIt = 1;
+		printf ( "\n" );
+	}
+	else if ( Debug )
+	{
+		PrintIt = 1;
+	}
+	else 
+	{
+		PrintIt = 0;
+	}
+#else
+	PrintIt = 1;
+#endif
+
+	for ( xp = 0; xp < PopCount; xp++ )
+	{
+#ifdef VERBOSE
+		if ( PrintIt ) 
+		{
+			qsort ( OldPopArray[xp].chromosome, 49, sizeof(ALLELE), (int(*)()) CompareChromoSort );
+
+			printf (  "%4d", xp );
+
+			for ( xc = 0; xc < 49; xc++ )
+			{
+				printf ( " %2.2s", CapitalArray[OldPopArray[xp].chromosome[xc].CapitalIndex].Abbr );
+			}
+
+			printf (  " %5.0f\n", OldPopArray[xp].distance );
+			
+			qsort ( OldPopArray[xp].chromosome, 49, sizeof(ALLELE), (int(*)()) CompareChromoIndex );
+		}
+#endif
+		if ( mindist == 0 || mindist > OldPopArray[xp].distance )
+		{
+			mindist = OldPopArray[xp].distance;
+
+			memcpy ( &BestChromosome, OldPopArray[xp].chromosome, sizeof(BestChromosome) );
+
+#ifndef VERBOSE
+			if ( PrintIt )
+			{
+				printf ( "Generation %d\n", gen_number );
+				PrintIt = 0;
+			}
+
+			qsort ( OldPopArray[xp].chromosome, 49, sizeof(ALLELE), (int(*)()) CompareChromoSort );
+
+			printf (  "%4d", xp );
+
+			for ( xc = 0; xc < 49; xc++ )
+			{
+				printf ( " %2.2s", CapitalArray[OldPopArray[xp].chromosome[xc].CapitalIndex].Abbr );
+			}
+
+			printf (  " %5.0f\n", OldPopArray[xp].distance );
+			
+			qsort ( OldPopArray[xp].chromosome, 49, sizeof(ALLELE), (int(*)()) CompareChromoIndex );
+#endif
+		}
+		if ( maxdist == 0 || maxdist < OldPopArray[xp].distance )
+		{
+			maxdist = OldPopArray[xp].distance;
+		}
+	}
+
+#ifdef VERBOSE
+	printf ( " %5d %5d\n", mindist, maxdist );
+#endif
+}
