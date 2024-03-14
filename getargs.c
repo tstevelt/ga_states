@@ -31,6 +31,11 @@ void getargs ( int argc, char *argv[] )
 	}
 
 	VisitThese = VISIT_ALL;
+	PopCount = 1000;
+	Generations = 500;
+	pCross = 0.995;
+	pMutation = 0.05;
+
 	StartState = argv[1];
 
 	Debug = 0;
