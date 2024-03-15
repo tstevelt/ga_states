@@ -19,6 +19,8 @@ static void makeshuffle ()
 {
 	short	xi;
 
+	ShuffleCount++;
+
 	/*--------------------------------
 		initialize
 	---------------------------------*/

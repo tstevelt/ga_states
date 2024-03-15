@@ -172,6 +172,7 @@ TYPE	ALLELE		BestChromosome[49];
 TYPE	double		BestDistance;
 TYPE	double		EarlyBreak;
 TYPE	int			MatchBestCount;
+TYPE	int			ShuffleCount;
 
 /*------------------------------
 :.,$d

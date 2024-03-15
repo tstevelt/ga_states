@@ -18,7 +18,7 @@ void report ( int gen_number )
 	static	int		mindist = 0;
 	static	int		maxdist = 0;
 
-	PrintIt = 1;
+	PrintIt = 2;
 
 	for ( xp = 0; xp < PopCount; xp++ )
 	{
@@ -35,9 +35,9 @@ void report ( int gen_number )
 			memcpy ( BestChromosome, OldPopArray[xp].chromosome, sizeof(BestChromosome) );
 			MatchBestCount = 0;
 
-			if ( RunMode == MODE_TERMINAL )
+			if ( PrintIt != 2 && RunMode == MODE_TERMINAL )
 			{
-				if ( PrintIt )
+				if ( PrintIt == 1 )
 				{
 					printf ( "Generation %d\n", gen_number );
 					PrintIt = 0;
@@ -61,5 +61,10 @@ void report ( int gen_number )
 		{
 			maxdist = OldPopArray[xp].distance;
 		}
+	}
+
+	if ( PrintIt == 2 )
+	{
+		printf ( "Generation %4d, %8d\n", gen_number, mindist );
 	}
 }

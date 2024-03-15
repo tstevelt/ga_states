@@ -28,6 +28,7 @@ int main ( int argc, char *argv[] )
 	if ( argc > 1 )
 	{
 		getargs ( argc, argv );
+		RunMode = MODE_TERMINAL;
 	}
 	else
 	{
@@ -55,18 +56,12 @@ int main ( int argc, char *argv[] )
 		//}
 	}
 
-	if ( RunMode == MODE_TERMINAL )
-	{
-		printf ( "Route calculations %d\n", RouteCalcs );
-	}
-	else
-	{
-	}
-
 	qsort ( BestChromosome, AlleleCount, sizeof(ALLELE), (int(*)()) CompareChromoSort );
 
 	if ( RunMode == MODE_TERMINAL )
 	{
+		printf ( "Route calculations %d\n", RouteCalcs );
+		printf ( "Shuffle count      %d\n", ShuffleCount );
 		printf ( "Minimum Latitude : %7.2f\n", MinLat );
 		printf ( "Maximum Latitude : %7.2f\n", MaxLat );
 		printf ( "Minimum Longitude: %7.2f\n", MinLong );
