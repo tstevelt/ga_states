@@ -63,7 +63,7 @@ void report ( int gen_number )
 		}
 	}
 
-	if ( PrintIt == 2 )
+	if ( PrintIt == 2 && RunMode == MODE_TERMINAL )
 	{
 		printf ( "Generation %4d, %8d\n", gen_number, mindist );
 	}
