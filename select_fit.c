@@ -21,6 +21,8 @@ static void makeshuffle ()
 
 	ShuffleCount++;
 
+	pick = 0;
+
 	/*--------------------------------
 		initialize
 	---------------------------------*/
@@ -33,18 +35,12 @@ static void makeshuffle ()
 	qsort ( shufflearray, PopCount, sizeof(ALLELE), (int(*)()) CompareChromoSort );
 }
 
-static void preselect ()
-{
-	pick = 0;
-	makeshuffle ();
-}
-
 int select_fit ( POPULATION population ) 
 {
 	int	first, second;
 
 	if ( pick + 1 >= PopCount )
-		preselect ();
+		makeshuffle ();
 
 	first  = shufflearray[pick++].CapitalIndex;
 	second = shufflearray[pick++].CapitalIndex;
