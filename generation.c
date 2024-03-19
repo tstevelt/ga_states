@@ -82,7 +82,7 @@ void generation ( int Generation )
 		NewPopArray[xi].parent2 = mate2;
 		NewPopArray[xi].xsite   = xsite;
 
-		NewPopArray[xi+1].distance = obj_func ( NewPopArray[xi].chromosome );
+		NewPopArray[xi+1].distance = obj_func ( NewPopArray[xi+1].chromosome );
 		NewPopArray[xi+1].parent1 = mate2;
 		NewPopArray[xi+1].parent2 = mate1;
 		NewPopArray[xi+1].xsite   = xsite;
