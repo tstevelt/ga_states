@@ -39,6 +39,5 @@ void crossover (  ALLELE parent1[], ALLELE parent2[],
 		memcpy ( &child1[xi], &parent2[xi], sizeof(ALLELE) );
 		memcpy ( &child2[xi], &parent1[xi], sizeof(ALLELE) );
 	}
-
 	*xsite = cross_site;
 }

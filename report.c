@@ -18,7 +18,7 @@ void report ( int gen_number )
 	static	int		mindist = 0;
 	static	int		maxdist = 0;
 
-	PrintIt = 2;
+	PrintIt = 1;
 
 	for ( xp = 0; xp < PopCount; xp++ )
 	{

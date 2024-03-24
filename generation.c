@@ -62,6 +62,31 @@ void generation ( int Generation )
 					NewPopArray[xi   ].chromosome, NewPopArray[xi+1 ].chromosome, 
 					&xsite );
 
+#ifdef STUFF
+#define STUFF
+	void PrintChromo ( ALLELE  chromosome[] )
+	{
+		qsort ( chromosome, AlleleCount, sizeof(ALLELE), (int(*)()) CompareChromoSort );
+		int		ndx;
+		for ( int xc = 0; xc < AlleleCount; xc++ )
+		{
+			ndx = chromosome[xc].CapitalIndex;
+			printf ( " %s", CapitalArray[ndx].Abbr );
+		}
+		printf ( "\n" );
+		qsort ( chromosome, AlleleCount, sizeof(ALLELE), (int(*)()) CompareChromoIndex );
+	}
+	if ( Generation == 10 && xi < 10 && xsite < 49 )
+	{
+		printf ( "cross_site %d\n", xsite );
+		PrintChromo ( OldPopArray[mate1].chromosome );
+		PrintChromo ( OldPopArray[mate2].chromosome );
+		PrintChromo ( NewPopArray[xi   ].chromosome );
+		PrintChromo ( NewPopArray[xi+1 ].chromosome );
+		exit ( 1 );
+	}
+#endif
+
 		if ( flip ( pMutation ) )
 		{
 			xs = u_random_range ( 0, AlleleCount - 1 );
