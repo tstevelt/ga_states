@@ -8,7 +8,9 @@
 
 	Who		Date		Modification
 	---------------------------------------------------------------------
-	tms		Mar 2024	Added GetGoogleCfg and released on Github
+	tms		Mar 2024	Added GetGoogleCfg and released on Github.
+	tms		03/29/2024	Option find longest, see #define in select_fit().
+	tms		03/29/2024	Speed up by eliminating half the qsort in obj_func().
 
 ----------------------------------------------------------------------------*/
 // 	Copyright © 2018-2024 Tom Stevelt

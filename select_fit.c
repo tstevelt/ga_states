@@ -13,7 +13,7 @@
 #include	"ga_states.h"
 
 static	ALLELE	shufflearray[MAXPOP];
-static	int		pick = MAXPOP + 10;
+static	int		pick = MAXPOP;
 
 static void makeshuffle ()
 {
@@ -39,13 +39,18 @@ int select_fit ( POPULATION population )
 {
 	int	first, second;
 
-	if ( pick + 1 >= PopCount )
+	if ( pick >= PopCount )
 		makeshuffle ();
 
 	first  = shufflearray[pick++].CapitalIndex;
 	second = shufflearray[pick++].CapitalIndex;
 
+#define FIND_SHORTEST
+#ifdef FIND_SHORTEST
 	if ( population[first].distance <= population[second].distance )
+#else
+	if ( population[first].distance > population[second].distance )
+#endif
 		return ( first );
 	else
 		return ( second ); 
